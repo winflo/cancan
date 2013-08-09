@@ -11,4 +11,8 @@ Kernel.const_get(rspec_module)::Matchers.define :be_able_to do |*args|
   failure_message_for_should_not do |ability|
     "expected not to be able to #{args.map(&:inspect).join(" ")}"
   end
+
+  description do |ability|
+    "be able to #{args.map{|arg| arg.instance_of?(Class) ? arg.to_s : arg.inspect}.join(" ")}"
+  end
 end
